@@ -20,8 +20,8 @@ export function TaskList() {
             idNumber = Math.floor(Math.random() * 1000)
         }
         if (newTaskTitle !== '') {
-            setTasks([
-                ...tasks,
+            setTasks(prevState => [
+                ...prevState,
                 {
                     id: idNumber,
                     title: newTaskTitle,
