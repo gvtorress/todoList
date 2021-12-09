@@ -19,6 +19,7 @@ export function TaskList() {
         while (tasks.filter(e => e.id === idNumber).length > 0) {
             idNumber = Math.floor(Math.random() * 1000)
         }
+
         if (newTaskTitle !== '') {
             setTasks(prevState => [
                 ...prevState,
@@ -28,6 +29,17 @@ export function TaskList() {
                     isComplete: false
                 }
             ])
+            setNewTaskTitle('')
+            // Gabarito
+            //  if (!newTask) return
+            //
+            // const newTask = {
+            //     id: idNumber,
+            //     title: newTaskTitle,
+            //     isComplete: false
+            // }
+            //
+            // setTasks(prevState => [...prevState, newTask])
         }
     }
 
@@ -36,11 +48,23 @@ export function TaskList() {
         let tasksUpdate = [...tasks]
         tasksUpdate[index].isComplete = !tasksUpdate[index].isComplete
         setTasks(tasksUpdate)
+
+        // Gabarito
+        // const newTasks = tasks.map(task => task.id === id ? {
+        //     ...task,
+        //     isComplete: !task.isComplete
+        // } : task)
+
+        // setTasks(newTasks)
     }
 
     function handleRemoveTask(id: number) {
         const index = tasks.findIndex(e => e.id === id)
         setTasks([...tasks.slice(0, index), ...tasks.slice(index + 1)])
+
+        // Gabarito
+        //  const filteredTasks = tasks.filter(task => task.id !== id)
+        //  setTasks(filteredTasks)
     }
 
     return (
